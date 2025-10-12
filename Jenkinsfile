@@ -12,40 +12,47 @@ pipipeline{
         ''', name: 'action'
     }
     stages{
-         stage("GitHub checkout....") {
+
+
+        stage("GitHub checkout....") {
+
             steps {
+
                 script {
+
  
                     git branch: 'main', url: 'https://github.com/clement2019/python_flask_app.git' 
                 }
             }
         }
         stage("Build docker connecting....."){
+
             steps{
+
                 sh 'printenv'
                 sh 'git version'
                 sh 'docker build . -t good777lord/f-app2'
             }
         }
-         stage("push image to DockerHub"){
+        stage("push image to DockerHub"){
+
 
             steps{
 
-               script {
 
-                
-                  
-                 withCredentials([string(credentialsId: 'DOCKERID', variable: 'DOCKERID')]) {
-                    sh 'docker login -u good777lord -p ${DOCKERID}'
-                  }
-                 sh 'docker push good777lord/f-app2:latest'
+                script {
+                    withCredentials([string(credentialsId: 'DOCKERID', variable: 'DOCKERID')]) {
+                        sh 'docker login -u good777lord -p ${DOCKERID}'
+                    }
+                        sh 'docker push good777lord/f-app2:latest'
                 }
             }
-          }
-          stage('Initializing teraform'){
+        }
+        stage('Initializing teraform'){
             steps{
                 script{
                     dir('terraform'){
+
                          sh 'terraform init'
                         
                     }
@@ -54,9 +61,12 @@ pipipeline{
         }
         stage('Validating Terraform'){
             steps{
+                
                 script{
+
                     dir('terraform'){
-                         sh 'terraform validate'
+
+                        sh 'terraform validate'
                     }
                 }
             }
