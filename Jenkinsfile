@@ -102,7 +102,7 @@ pipeline{
                             sh 'aws eks describe-cluster --name my-eks-cluster1 --region eu-west-2'
                             sh ('aws eks update-kubeconfig --name my-eks-cluster1 --region eu-west-2')
                             
-                            sh "kubectl apply -f aap-deployment.yaml"
+                            sh "kubectl apply -f app-deployment.yaml"
                             //sh "kubectl apply -f service.yaml"
                                 
                     
