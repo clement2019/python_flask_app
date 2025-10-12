@@ -16,7 +16,7 @@ pipipeline{
             steps {
                 script {
  
-                    git branch: 'main', url: 'enter project url' 
+                    git branch: 'main', url: 'https://github.com/clement2019/python_flask_app.git' 
                 }
             }
         }
