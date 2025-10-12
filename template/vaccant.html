@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Openings</title>
+</head>
+<body>
+    <h2>Available Openings</h2>
+    <ul>
+        {% for job in openings %}
+        <li>{{ job }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

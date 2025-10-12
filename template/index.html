@@ -1,15 +1,40 @@
-html>
- 
-<h2>Welcome to my website</h2>
- 
- 
- 
-    <h4>Our Vision is {{Developing usefull skills set for the cloud ecosystem}}</h4>
- 
- 
- 
- 
- 
- 
- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Mood & Productivity Tracker</title>
+</head>
+<body>
+    <h1>Welcome to Your Daily Mood & Productivity Tracker</h1>
+
+    <form method="POST">
+        <label>Your Mood Today:</label><br>
+        <select name="mood" required>
+            <option value="">--Select Mood--</option>
+            <option>Happy</option>
+            <option>Sad</option>
+            <option>Excited</option>
+            <option>Stressed</option>
+            <option>Neutral</option>
+        </select><br><br>
+
+        <label>Tasks Completed Today (comma separated):</label><br>
+        <input type="text" name="tasks" placeholder="e.g., completed project, cleaned room" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if show_result %}
+        <hr>
+        <h2>Today's Summary</h2>
+        <p><strong>Mood:</strong> {{ mood }}</p>
+        <p><strong>Tasks Completed:</strong></p>
+        <ul>
+            {% for task in tasks %}
+            <li>{{ task }}</li>
+            {% endfor %}
+        </ul>
+        <p><strong>Productivity Score:</strong> {{ score }}</p>
+        <p><strong>Motivational Quote:</strong> "{{ quote }}"</p>
+    {% endif %}
+</body>
 </html>

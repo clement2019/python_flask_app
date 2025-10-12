@@ -6,6 +6,6 @@ COPY requirement.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirement.txt
 COPY . .
-EXPOSE 8000
+EXPOSE 3000
  
 CMD ["python", "app.py"]
